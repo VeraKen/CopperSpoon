@@ -1,7 +1,7 @@
 const recipes = [
-  { icon: "🍝", title: "Silky Tomato Pasta", type: "Italian", time: "30 min", text: "Slow-roasted tomato, garlic, basil, and a glossy parmesan finish." },
-  { icon: "🍛", title: "Golden Butter Chicken", type: "Indian", time: "45 min", text: "A warmly spiced, creamy classic made for sharing around the table." },
-  { icon: "🥘", title: "Smoky Jollof Rice", type: "West African", time: "55 min", text: "Party-style rice with peppers, tomatoes, thyme, and deep smoky flavour." },
+  { slug: "silky-tomato-pasta", icon: "🍝", title: "Silky Tomato Pasta", type: "Italian", time: "30 min", text: "Slow-roasted tomato, garlic, basil, and a glossy parmesan finish." },
+  { slug: "golden-butter-chicken", icon: "🍛", title: "Golden Butter Chicken", type: "Indian", time: "45 min", text: "A warmly spiced, creamy classic made for sharing around the table." },
+  { slug: "smoky-jollof-rice", icon: "🥘", title: "Smoky Jollof Rice", type: "West African", time: "55 min", text: "Party-style rice with peppers, tomatoes, thyme, and deep smoky flavour." },
 ];
 
 const cuisines = [
@@ -54,7 +54,7 @@ export default function Home() {
           {recipes.map((recipe, index) => (
             <article className="recipe-card" key={recipe.title}>
               <div className={`recipe-visual visual-${index + 1}`}><span>{recipe.icon}</span><b>{recipe.time}</b></div>
-              <div className="recipe-body"><small>{recipe.type}</small><h3>{recipe.title}</h3><p>{recipe.text}</p><a href="#contact">Cook this recipe <span>→</span></a></div>
+              <div className="recipe-body"><small>{recipe.type}</small><h3>{recipe.title}</h3><p>{recipe.text}</p><a href={`/recipes/${recipe.slug}`}>Cook this recipe <span>→</span></a></div>
             </article>
           ))}
         </div>
