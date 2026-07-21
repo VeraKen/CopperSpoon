@@ -5,8 +5,9 @@ export default function NewsletterForm(){
  const [status,setStatus]=useState<"idle"|"loading"|"success"|"error">("idle");
  const [message,setMessage]=useState("");
  async function submit(event:FormEvent<HTMLFormElement>){
- event.preventDefault(); setStatus("loading"); setMessage("");
-  const form=new FormData(event.currentTarget);
+  event.preventDefault(); setStatus("loading"); setMessage("");
+  const formElement=event.currentTarget;
+  const form=new FormData(formElement);
   const email=String(form.get("email")||"").trim();
   const consent=form.get("consent")==="yes";
   if(!email){setStatus("error");setMessage("Please enter your email address.");return;}
@@ -15,7 +16,7 @@ export default function NewsletterForm(){
    const response=await fetch("/api/subscribe",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email,consent})});
    const body=await response.json();
    if(!response.ok)throw new Error(body.error||"Please try again.");
-   setStatus("success"); setMessage("Welcome to the table! Check your inbox for your first three recipes."); event.currentTarget.reset();
+   setStatus("success"); setMessage("Welcome to the table! Check your inbox for your first three recipes."); formElement.reset();
   }catch(error){setStatus("error");setMessage(error instanceof Error?error.message:"Please try again.");}
  }
  return <form className="newsletter-form" onSubmit={submit} noValidate>
