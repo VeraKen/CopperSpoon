@@ -1,4 +1,5 @@
 import { recipes } from "./data/recipes";
+import NewsletterForm from "./components/newsletter-form";
 /*
 const oldRecipes = [
   { slug: "silky-tomato-pasta", image: "/recipes/silky-pasta.jpg", title: "Silky Tomato Pasta", type: "Italian", time: "30 min", text: "Slow-roasted tomato, garlic, basil, and a glossy parmesan finish." },
@@ -77,7 +78,7 @@ export default function Home() {
         <div className="restaurant-copy"><p className="eyebrow">Lagos dining guide</p><h2>Find your next<br /><em>favourite table.</em></h2><p>Explore restaurants across Victoria Island, Ikoyi, Lekki and Ikeja—from Nigerian classics to memorable global dining.</p><div className="details"><div><span>Restaurants</span><b>All Lagos choices</b></div><div><span>Neighbourhoods</span><b>VI · Ikoyi · Lekki · Ikeja</b></div></div><a className="button" href="/restaurants">Explore restaurants <span>→</span></a></div>
       </section>
 
-      <section className="newsletter" id="contact"><p className="eyebrow light">Stay for seconds</p><h2>Good food, straight to your inbox.</h2><p>Fresh recipes, chef stories, and restaurant news—served occasionally.</p><form><label className="sr-only" htmlFor="email">Email address</label><input id="email" type="email" placeholder="Your email address" /><button type="submit">Join the table</button></form></section>
+      <section className="newsletter" id="contact"><p className="eyebrow light">Stay for seconds</p><h2>Three recipes, every day.</h2><p>Join the table and receive three fresh Copper Spoon recipes in your inbox each morning.</p><NewsletterForm/></section>
 
       <footer><div className="brand"><span className="brand-mark">CS</span><span><b>The Copper Spoon</b><small>Food made with heart</small></span></div><p>Recipes · Cuisines · Restaurant</p><p>© 2026 The Copper Spoon</p></footer>
     </main>

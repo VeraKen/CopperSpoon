@@ -1,0 +1,23 @@
+THE COPPER SPOON — DAILY EMAIL SETUP
+
+The website code is ready to subscribe visitors and send three recipes each day.
+To activate real email delivery, complete these steps after uploading to GitHub:
+
+1. Create an account at https://resend.com
+2. In Resend, add and verify a domain you own.
+3. Create a Resend API key.
+4. Open your Copper Spoon project in Vercel.
+5. Go to Settings > Environment Variables.
+6. Add these five variables for Production:
+
+   RESEND_API_KEY = your Resend API key
+   MAIL_FROM = The Copper Spoon <recipes@your-verified-domain.com>
+   SITE_URL = https://your-real-copper-spoon-domain.com
+   CRON_SECRET = a private random password at least 16 characters long
+   UNSUBSCRIBE_SECRET = a different private random password at least 32 characters long
+
+7. Redeploy the project in Vercel.
+8. Test the form with your own email address.
+
+The daily email is scheduled for 5:00 AM UTC, which is 6:00 AM in Lagos.
+The signup form requires consent, and every email contains an unsubscribe link.
