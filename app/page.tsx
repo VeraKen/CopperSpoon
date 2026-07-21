@@ -24,6 +24,7 @@ export default function Home() {
         <nav aria-label="Main navigation">
           <div className="nav-dropdown"><a href="/cuisines#recipes">Recipes</a><div className="dropdown-menu">{recipes.slice(0,8).map((recipe)=><a key={recipe.slug} href={`/recipes/${recipe.slug}`}>{recipe.title}</a>)}<a className="view-all" href="/cuisines#recipes">View all</a></div></div>
           <div className="nav-dropdown"><a href="/cuisines">Cuisines</a><div className="dropdown-menu">{["Mexican","Italian","Chinese","Indian","German","Greek","Filipino","Japanese"].map((name)=><a key={name} href={`/cuisines?name=${encodeURIComponent(name)}`}>{name}</a>)}<a className="view-all" href="/cuisines">View all</a></div></div>
+          <div className="nav-dropdown"><a href="/videos">Video</a><div className="dropdown-menu video-menu">{recipes.slice(0,8).map((recipe)=><a key={recipe.slug} href={`/videos?cuisine=${encodeURIComponent(recipe.cuisine)}`}>{recipe.title}</a>)}<a className="view-all" href="/videos">View all</a></div></div>
           <div className="nav-dropdown"><a href="/restaurants">Restaurants</a><div className="dropdown-menu restaurant-menu">{["NOK by Alara","Shiro Lagos","Cactus Restaurant","RSVP Lagos","Z Kitchen","Ocean Basket","Terra Kulture","Kapadoccia Lagos"].map((name)=><a key={name} href="/restaurants">{name}</a>)}<a className="view-all" href="/restaurants">View all</a></div></div>
         </nav>
         <a className="button button-small" href="#contact">Book a table</a>
