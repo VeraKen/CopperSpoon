@@ -1,5 +1,6 @@
 import { recipes } from "./data/recipes";
 import NewsletterForm from "./components/newsletter-form";
+import AuthNav from "./components/auth-nav";
 /*
 const oldRecipes = [
   { slug: "silky-tomato-pasta", image: "/recipes/silky-pasta.jpg", title: "Silky Tomato Pasta", type: "Italian", time: "30 min", text: "Slow-roasted tomato, garlic, basil, and a glossy parmesan finish." },
@@ -27,7 +28,7 @@ export default function Home() {
           <div className="nav-dropdown"><a href="/videos">Video</a><div className="dropdown-menu video-menu">{recipes.slice(0,8).map((recipe)=><a key={recipe.slug} href={`/videos?cuisine=${encodeURIComponent(recipe.cuisine)}`}>{recipe.title}</a>)}<a className="view-all" href="/videos">View all</a></div></div>
           <div className="nav-dropdown"><a href="/restaurants">Restaurants</a><div className="dropdown-menu restaurant-menu">{["NOK by Alara","Shiro Lagos","Cactus Restaurant","RSVP Lagos","Z Kitchen","Ocean Basket","Terra Kulture","Kapadoccia Lagos"].map((name)=><a key={name} href="/restaurants">{name}</a>)}<a className="view-all" href="/restaurants">View all</a></div></div>
         </nav>
-        <a className="button button-small" href="#contact">Book a table</a>
+        <AuthNav/>
       </header>
 
       <section className="hero" id="home">

@@ -1,0 +1,24 @@
+THE COPPER SPOON — SIGN UP, LOGIN & GOOGLE AUTH SETUP
+
+1. Create a free project at https://supabase.com
+2. In Supabase, open Project Settings > API.
+3. Copy the Project URL and the public anon key.
+4. In Vercel > Environment Variables add:
+   NEXT_PUBLIC_SUPABASE_URL = your Supabase Project URL
+   NEXT_PUBLIC_SUPABASE_ANON_KEY = your Supabase public anon key
+5. Apply both to Production and Preview, then redeploy.
+
+EMAIL AND PASSWORD
+- In Supabase > Authentication > Providers, keep Email enabled.
+- In Authentication > URL Configuration set Site URL to https://thecopperspoon.com
+- Add these Redirect URLs:
+  https://thecopperspoon.com/**
+  https://copper-spoon.vercel.app/**
+
+GOOGLE SIGN-IN
+1. In Google Cloud Console create OAuth 2.0 Web credentials.
+2. Copy the callback URL shown in Supabase > Authentication > Providers > Google.
+3. Add that URL as an Authorized redirect URI in Google Cloud.
+4. Copy the Google Client ID and Client Secret into the Supabase Google provider and enable it.
+
+Never put the Supabase service-role key in the browser or in NEXT_PUBLIC variables.
