@@ -19,5 +19,11 @@ To activate real email delivery, complete these steps after uploading to GitHub:
 7. Redeploy the project in Vercel.
 8. Test the form with your own email address.
 
+IMPORTANT:
+- MAIL_FROM must use an address on the domain you verified in Resend.
+- Add the variables to Production, Preview, and Development if you test in all three environments.
+- After saving environment variables, create a new deployment; existing deployments do not receive newly added values.
+- The signup form sends the first three recipes immediately. Check Spam or Promotions if they do not appear in the main inbox.
+
 The daily email is scheduled for 5:00 AM UTC, which is 6:00 AM in Lagos.
 The signup form requires consent, and every email contains an unsubscribe link.
