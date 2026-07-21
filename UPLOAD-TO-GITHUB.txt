@@ -1,0 +1,10 @@
+THE COPPER SPOON — UPLOAD INSTRUCTIONS
+
+1. Extract this ZIP file on your computer.
+2. Open the extracted copper-spoon-website folder.
+3. Select everything inside the folder.
+4. Drag those files and folders onto GitHub's upload page.
+5. Click "Commit changes".
+6. Vercel will begin deploying the website automatically.
+
+Important: Upload the extracted contents, not the ZIP file itself.
