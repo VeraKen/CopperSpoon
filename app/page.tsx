@@ -1,14 +1,13 @@
 const recipes = [
-  { slug: "silky-tomato-pasta", icon: "🍝", title: "Silky Tomato Pasta", type: "Italian", time: "30 min", text: "Slow-roasted tomato, garlic, basil, and a glossy parmesan finish." },
-  { slug: "golden-butter-chicken", icon: "🍛", title: "Golden Butter Chicken", type: "Indian", time: "45 min", text: "A warmly spiced, creamy classic made for sharing around the table." },
-  { slug: "smoky-jollof-rice", icon: "🥘", title: "Smoky Jollof Rice", type: "West African", time: "55 min", text: "Party-style rice with peppers, tomatoes, thyme, and deep smoky flavour." },
+  { slug: "silky-tomato-pasta", image: "/recipes/silky-pasta.jpg", title: "Silky Tomato Pasta", type: "Italian", time: "30 min", text: "Slow-roasted tomato, garlic, basil, and a glossy parmesan finish." },
+  { slug: "golden-butter-chicken", image: "/recipes/butter-chicken.jpg", title: "Golden Butter Chicken", type: "Indian", time: "45 min", text: "A warmly spiced, creamy classic made for sharing around the table." },
+  { slug: "smoky-jollof-rice", image: "/recipes/smoky-jollof.jpg", title: "Smoky Jollof Rice", type: "West African", time: "55 min", text: "Party-style rice with peppers, tomatoes, thyme, and deep smoky flavour." },
 ];
 
 const cuisines = [
-  { icon: "🌿", name: "Mediterranean", note: "Bright, fresh & generous" },
-  { icon: "🌶️", name: "West African", note: "Bold, soulful & vibrant" },
-  { icon: "🍋", name: "Modern European", note: "Elegant seasonal plates" },
-  { icon: "🥢", name: "Asian Inspired", note: "Sweet, savoury & aromatic" },
+  { icon: "🍝", name: "Italian", note: "Silky Tomato Pasta", href: "/recipes/silky-tomato-pasta" },
+  { icon: "🌶️", name: "West African", note: "Smoky Jollof Rice", href: "/recipes/smoky-jollof-rice" },
+  { icon: "🍛", name: "Indian", note: "Golden Butter Chicken", href: "/recipes/golden-butter-chicken" },
 ];
 
 export default function Home() {
@@ -53,7 +52,7 @@ export default function Home() {
         <div className="recipe-grid">
           {recipes.map((recipe, index) => (
             <article className="recipe-card" key={recipe.title}>
-              <div className={`recipe-visual visual-${index + 1}`}><span>{recipe.icon}</span><b>{recipe.time}</b></div>
+              <div className={`recipe-visual visual-${index + 1}`}><img src={recipe.image} alt={recipe.title} /><b>{recipe.time}</b></div>
               <div className="recipe-body"><small>{recipe.type}</small><h3>{recipe.title}</h3><p>{recipe.text}</p><a href={`/recipes/${recipe.slug}`}>Cook this recipe <span>→</span></a></div>
             </article>
           ))}
@@ -64,7 +63,7 @@ export default function Home() {
         <div className="section cuisine-inner">
           <div className="cuisine-copy"><p className="eyebrow light">Taste the world</p><h2>A table without borders</h2><p>Food brings us closer. Travel through treasured culinary traditions and discover new favourites—all from one generous table.</p><a className="button cream" href="#contact">Explore our flavours</a></div>
           <div className="cuisine-grid">
-            {cuisines.map((item) => <article key={item.name}><span>{item.icon}</span><div><h3>{item.name}</h3><p>{item.note}</p></div></article>)}
+            {cuisines.map((item) => <a className="cuisine-card" href={item.href} key={item.name}><span>{item.icon}</span><div><h3>{item.name}</h3><p>{item.note}</p><small>View recipe →</small></div></a>)}
           </div>
         </div>
       </section>
