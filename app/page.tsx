@@ -23,7 +23,7 @@ export default function Home() {
         <nav aria-label="Main navigation">
           <div className="nav-dropdown"><a href="/cuisines#recipes">Recipes</a><div className="dropdown-menu">{recipes.slice(0,8).map((recipe)=><a key={recipe.slug} href={`/recipes/${recipe.slug}`}>{recipe.title}</a>)}<a className="view-all" href="/cuisines#recipes">View all</a></div></div>
           <div className="nav-dropdown"><a href="/cuisines">Cuisines</a><div className="dropdown-menu">{["Mexican","Italian","Chinese","Indian","German","Greek","Filipino","Japanese"].map((name)=><a key={name} href={`/cuisines?name=${encodeURIComponent(name)}`}>{name}</a>)}<a className="view-all" href="/cuisines">View all</a></div></div>
-          <div className="nav-dropdown"><a href="/restaurants">Restaurants</a><div className="dropdown-menu restaurant-menu">{["NOK by Alara","Shiro Lagos","Cactus Restaurant","RSVP Lagos","Z Kitchen","Ocean Basket","Terra Kulture","Kapadoccia Lagos"].map((name)=><a key={name} href="/restaurants">{name}</a>)}<a className="view-all" href="/restaurants">View all 45</a></div></div>
+          <div className="nav-dropdown"><a href="/restaurants">Restaurants</a><div className="dropdown-menu restaurant-menu">{["NOK by Alara","Shiro Lagos","Cactus Restaurant","RSVP Lagos","Z Kitchen","Ocean Basket","Terra Kulture","Kapadoccia Lagos"].map((name)=><a key={name} href="/restaurants">{name}</a>)}<a className="view-all" href="/restaurants">View all</a></div></div>
         </nav>
         <a className="button button-small" href="#contact">Book a table</a>
       </header>
@@ -74,7 +74,7 @@ export default function Home() {
 
       <section className="restaurant section" id="restaurant">
         <div className="restaurant-art"><img src="/copper-spoon-logo.png" alt="Copper Spoon restaurant identity" /></div>
-        <div className="restaurant-copy"><p className="eyebrow">Lagos dining guide</p><h2>Find your next<br /><em>favourite table.</em></h2><p>Explore 45 restaurants across Victoria Island, Ikoyi, Lekki and Ikeja—from Nigerian classics to memorable global dining.</p><div className="details"><div><span>Restaurants</span><b>45 Lagos choices</b></div><div><span>Neighbourhoods</span><b>VI · Ikoyi · Lekki · Ikeja</b></div></div><a className="button" href="/restaurants">Explore restaurants <span>→</span></a></div>
+        <div className="restaurant-copy"><p className="eyebrow">Lagos dining guide</p><h2>Find your next<br /><em>favourite table.</em></h2><p>Explore restaurants across Victoria Island, Ikoyi, Lekki and Ikeja—from Nigerian classics to memorable global dining.</p><div className="details"><div><span>Restaurants</span><b>All Lagos choices</b></div><div><span>Neighbourhoods</span><b>VI · Ikoyi · Lekki · Ikeja</b></div></div><a className="button" href="/restaurants">Explore restaurants <span>→</span></a></div>
       </section>
 
       <section className="newsletter" id="contact"><p className="eyebrow light">Stay for seconds</p><h2>Good food, straight to your inbox.</h2><p>Fresh recipes, chef stories, and restaurant news—served occasionally.</p><form><label className="sr-only" htmlFor="email">Email address</label><input id="email" type="email" placeholder="Your email address" /><button type="submit">Join the table</button></form></section>
