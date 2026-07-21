@@ -1,8 +1,10 @@
-const recipes = [
+import { recipes } from "./data/recipes";
+/*
+const oldRecipes = [
   { slug: "silky-tomato-pasta", image: "/recipes/silky-pasta.jpg", title: "Silky Tomato Pasta", type: "Italian", time: "30 min", text: "Slow-roasted tomato, garlic, basil, and a glossy parmesan finish." },
   { slug: "golden-butter-chicken", image: "/recipes/butter-chicken.jpg", title: "Golden Butter Chicken", type: "Indian", time: "45 min", text: "A warmly spiced, creamy classic made for sharing around the table." },
   { slug: "smoky-jollof-rice", image: "/recipes/smoky-jollof.jpg", title: "Smoky Jollof Rice", type: "West African", time: "55 min", text: "Party-style rice with peppers, tomatoes, thyme, and deep smoky flavour." },
-];
+];*/
 
 const cuisines = [
   { icon: "🍝", name: "Italian", note: "Silky Tomato Pasta", href: "/recipes/silky-tomato-pasta" },
@@ -19,7 +21,9 @@ export default function Home() {
           <span><b>The Copper Spoon</b><small>Recipes · Culture · Dining</small></span>
         </a>
         <nav aria-label="Main navigation">
-          <a href="#recipes">Recipes</a><a href="#cuisines">Cuisines</a><a href="#restaurant">Restaurant</a>
+          <a href="#recipes">Recipes</a>
+          <div className="nav-dropdown"><a href="/cuisines">Cuisines</a><div className="dropdown-menu">{["Mexican","Italian","Chinese","Indian","German","Greek","Filipino","Japanese"].map((name)=><a key={name} href={`/cuisines?name=${encodeURIComponent(name)}`}>{name}</a>)}<a className="view-all" href="/cuisines">View all</a></div></div>
+          <a href="#restaurant">Restaurant</a>
         </nav>
         <a className="button button-small" href="#contact">Book a table</a>
       </header>
@@ -47,13 +51,13 @@ export default function Home() {
       <section className="section" id="recipes">
         <div className="section-heading">
           <div><p className="eyebrow">From our kitchen</p><h2>Recipes worth gathering for</h2></div>
-          <a className="text-link" href="#recipes">View all recipes <span>→</span></a>
+          <a className="text-link" href="/cuisines">View all recipes <span>→</span></a>
         </div>
         <div className="recipe-grid">
-          {recipes.map((recipe, index) => (
+          {recipes.slice(0, 6).map((recipe, index) => (
             <article className="recipe-card" key={recipe.title}>
               <div className={`recipe-visual visual-${index + 1}`}><img src={recipe.image} alt={recipe.title} /><b>{recipe.time}</b></div>
-              <div className="recipe-body"><small>{recipe.type}</small><h3>{recipe.title}</h3><p>{recipe.text}</p><a href={`/recipes/${recipe.slug}`}>Cook this recipe <span>→</span></a></div>
+              <div className="recipe-body"><small>{recipe.cuisine}</small><h3>{recipe.title}</h3><p>{recipe.description}</p><a href={`/recipes/${recipe.slug}`}>Cook this recipe <span>→</span></a></div>
             </article>
           ))}
         </div>
@@ -61,7 +65,7 @@ export default function Home() {
 
       <section className="cuisine-section" id="cuisines">
         <div className="section cuisine-inner">
-          <div className="cuisine-copy"><p className="eyebrow light">Taste the world</p><h2>A table without borders</h2><p>Food brings us closer. Travel through treasured culinary traditions and discover new favourites—all from one generous table.</p><a className="button cream" href="#contact">Explore our flavours</a></div>
+          <div className="cuisine-copy"><p className="eyebrow light">Taste the world</p><h2>A table without borders</h2><p>Food brings us closer. Travel through treasured culinary traditions and discover new favourites—all from one generous table.</p><a className="button cream" href="/cuisines">View all cuisines</a></div>
           <div className="cuisine-grid">
             {cuisines.map((item) => <a className="cuisine-card" href={item.href} key={item.name}><span>{item.icon}</span><div><h3>{item.name}</h3><p>{item.note}</p><small>View recipe →</small></div></a>)}
           </div>
