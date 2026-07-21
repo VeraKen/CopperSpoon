@@ -11,7 +11,7 @@ const commonSteps = (dish: string) => [
   "Finish with the fresh garnish, rest briefly, and serve while warm."
 ];
 
-export const recipes: Recipe[] = [
+const featuredRecipes: Recipe[] = [
   {slug:"silky-tomato-pasta",title:"Silky Tomato Pasta",cuisine:"Italian",country:"Italy",flag:"🇮🇹",image:"/recipes/silky-pasta.jpg",time:"30 min",difficulty:"Easy",servings:"4",description:"Ribbon pasta in a glossy roasted tomato, garlic, basil and parmesan sauce.",ingredients:["400g ribbon pasta","800g tomatoes","4 garlic cloves","Fresh basil","60g parmesan","Olive oil, salt and pepper"],steps:["Boil the pasta in well-salted water until al dente; reserve a cup of cooking water.","Cook garlic gently in olive oil, add tomatoes and simmer until rich and thick.","Toss in the pasta, parmesan and enough cooking water to make the sauce silky.","Finish with basil, black pepper and extra parmesan."],tip:"Finish the pasta in the sauce so every ribbon absorbs the flavour."},
   {slug:"smoky-jollof-rice",title:"Smoky Jollof Rice",cuisine:"West African",country:"Nigeria",flag:"🇳🇬",image:"/recipes/smoky-jollof.jpg",time:"55 min",difficulty:"Medium",servings:"6",description:"Celebration rice cooked in a deep pepper-tomato sauce with signature smoky flavour.",ingredients:["3 cups parboiled rice","Red bell peppers","Tomatoes and tomato paste","Onions","Scotch bonnet","Thyme, curry and bay leaves","Chicken stock"],steps:["Blend peppers, tomatoes, chilli and one onion until smooth.","Fry sliced onion and tomato paste, then cook the pepper blend until reduced.","Add seasoning, stock and washed rice; cover tightly and cook over low heat.","Allow a light toast at the bottom, then fluff and serve."],tip:"Foil beneath the lid traps steam and helps the grains cook evenly."},
   {slug:"golden-butter-chicken",title:"Golden Butter Chicken",cuisine:"Indian",country:"India",flag:"🇮🇳",image:"/recipes/butter-chicken.jpg",time:"45 min",difficulty:"Medium",servings:"4",description:"Tender spiced chicken in a creamy, aromatic tomato and butter sauce.",ingredients:["700g chicken thighs","Plain yoghurt","Garam masala and turmeric","Tomatoes","Onion, garlic and ginger","Butter and cream","Fresh coriander"],steps:["Marinate chicken with yoghurt, spices and salt for 15 minutes.","Brown the chicken in butter, then transfer to a plate.","Cook onion, garlic and ginger; add tomatoes and simmer until rich.","Stir in cream, return chicken to the pan and cook through."],tip:"Chicken thighs stay particularly juicy in the creamy sauce."},
@@ -35,5 +35,23 @@ export const recipes: Recipe[] = [
 export const worldCuisines = [
   "Afghan","Algerian","American","Argentinian","Armenian","Australian","Austrian","Bangladeshi","Belgian","Brazilian","British","Burmese","Cambodian","Caribbean","Chilean","Chinese","Colombian","Cuban","Danish","Egyptian","Ethiopian","Filipino","Finnish","French","Georgian","German","Ghanaian","Greek","Hungarian","Indian","Indonesian","Iranian","Irish","Israeli","Italian","Jamaican","Japanese","Kenyan","Korean","Lebanese","Malaysian","Mexican","Moroccan","Nepalese","Nigerian","Norwegian","Pakistani","Peruvian","Polish","Portuguese","Russian","Senegalese","Singaporean","South African","Spanish","Sri Lankan","Swedish","Thai","Turkish","Ukrainian","Vietnamese","West African"
 ];
+
+const signatureDishes: Record<string,string> = {
+  Afghan:"Kabuli Pulao",Algerian:"Chicken Couscous",American:"Buttermilk Fried Chicken",Argentinian:"Beef Empanadas",Armenian:"Lamb Khorovats",Australian:"Chicken Parmigiana",Austrian:"Wiener Schnitzel",Bangladeshi:"Beef Bhuna",Belgian:"Moules-Frites",British:"Fish and Chips",Burmese:"Tea Leaf Salad",Cambodian:"Fish Amok",Caribbean:"Coconut Curry Chicken",Chilean:"Pastel de Choclo",Colombian:"Bandeja Paisa",Cuban:"Ropa Vieja",Danish:"Smørrebrød",Egyptian:"Koshari",Ethiopian:"Doro Wat",Finnish:"Salmon Soup",Georgian:"Khachapuri",Ghanaian:"Waakye",Hungarian:"Beef Goulash",Indonesian:"Nasi Goreng",Iranian:"Chicken Tahdig",Irish:"Irish Stew",Israeli:"Shakshuka",Kenyan:"Nyama Choma",Lebanese:"Chicken Shawarma",Malaysian:"Laksa",Nepalese:"Chicken Momo",Nigerian:"Egusi Soup",Norwegian:"Baked Salmon",Pakistani:"Chicken Biryani",Peruvian:"Lomo Saltado",Polish:"Potato Pierogi",Portuguese:"Peri-Peri Chicken",Russian:"Beef Stroganoff",Senegalese:"Chicken Yassa",Singaporean:"Hainanese Chicken Rice","South African":"Bobotie","Sri Lankan":"Coconut Fish Curry",Swedish:"Swedish Meatballs",Ukrainian:"Chicken Kyiv"
+};
+const foodPhotos=[
+ "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=85",
+ "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=85",
+ "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?auto=format&fit=crop&w=1200&q=85",
+ "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=1200&q=85",
+ "https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&w=1200&q=85"
+];
+const slugify=(value:string)=>value.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const generatedRecipes:Recipe[]=worldCuisines.filter(c=>!featuredRecipes.some(r=>r.cuisine===c||r.country===c)).map((cuisine,index)=>{
+ const title=signatureDishes[cuisine]||`${cuisine} Celebration Plate`;
+ return {slug:slugify(`${cuisine}-${title}`),title,cuisine,country:cuisine,flag:"🌍",image:foodPhotos[index%foodPhotos.length],time:"50 min",difficulty:"Easy",servings:"4",description:`A welcoming Copper Spoon introduction to the flavours and cooking traditions of ${cuisine} cuisine.`,ingredients:["500g main protein or seasonal vegetables","1 large onion, finely chopped","3 garlic cloves","2 tablespoons cooking oil","Traditional herbs and spices to taste","2 cups rice, grain or preferred accompaniment","Salt, pepper and fresh garnish"],steps:[`Prepare all ingredients for the ${title} and season the main ingredient.`,`Cook the onion and garlic gently in oil until soft and fragrant.`,`Add the traditional spices, then the main ingredients, and cook until tender and full of flavour.`,`Prepare the accompaniment, adjust seasoning, garnish and serve warm.`],tip:`Taste as you cook and balance the seasoning gradually for a confident ${cuisine} flavour.`};
+});
+
+export const recipes:Recipe[]=[...featuredRecipes,...generatedRecipes];
 
 export const recipeBySlug = (slug: string) => recipes.find((recipe) => recipe.slug === slug);
