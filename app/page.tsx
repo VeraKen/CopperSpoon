@@ -1,4 +1,5 @@
 import { recipes } from "./data/recipes";
+import { desserts } from "./data/desserts";
 import NewsletterForm from "./components/newsletter-form";
 import AuthNav from "./components/auth-nav";
 /*
@@ -25,6 +26,7 @@ export default function Home() {
         <nav aria-label="Main navigation">
           <div className="nav-dropdown"><a href="/cuisines#recipes">Recipes</a><div className="dropdown-menu">{recipes.slice(0,8).map((recipe)=><a key={recipe.slug} href={`/recipes/${recipe.slug}`}>{recipe.title}</a>)}<a className="view-all" href="/cuisines#recipes">View all</a></div></div>
           <div className="nav-dropdown"><a href="/cuisines">Cuisines</a><div className="dropdown-menu">{["Mexican","Italian","Chinese","Indian","German","Greek","Filipino","Japanese"].map((name)=><a key={name} href={`/cuisines?name=${encodeURIComponent(name)}`}>{name}</a>)}<a className="view-all" href="/cuisines">View all</a></div></div>
+          <div className="nav-dropdown"><a href="/desserts">Desserts</a><div className="dropdown-menu dessert-menu">{desserts.slice(0,7).map((dessert)=><a key={dessert.slug} href={`/recipes/${dessert.slug}`}>{dessert.title}</a>)}<a className="view-all" href="/desserts">View all 45</a></div></div>
           <div className="nav-dropdown"><a href="/videos">Video</a><div className="dropdown-menu video-menu">{recipes.slice(0,8).map((recipe)=><a key={recipe.slug} href={`/videos?cuisine=${encodeURIComponent(recipe.cuisine)}`}>{recipe.title}</a>)}<a className="view-all" href="/videos">View all</a></div></div>
           <div className="nav-dropdown"><a href="/restaurants">Restaurants</a><div className="dropdown-menu restaurant-menu">{["NOK by Alara","Shiro Lagos","Cactus Restaurant","RSVP Lagos","Z Kitchen","Ocean Basket","Terra Kulture","Kapadoccia Lagos"].map((name)=><a key={name} href="/restaurants">{name}</a>)}<a className="view-all" href="/restaurants">View all</a></div></div>
         </nav>
@@ -66,6 +68,18 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="dessert-preview">
+        <div className="section">
+          <div className="section-heading">
+            <div><p className="eyebrow light">Save room for something sweet</p><h2>45 desserts from around the world</h2></div>
+            <a className="text-link dessert-preview-link" href="/desserts">Explore every dessert <span>→</span></a>
+          </div>
+          <div className="dessert-preview-grid">
+            {[desserts[0],desserts[9],desserts[26]].map((dessert)=><a href={`/recipes/${dessert.slug}`} className="dessert-preview-card" key={dessert.slug}><img src={dessert.image} alt={dessert.title}/><div><small>{dessert.flag} {dessert.country}</small><h3>{dessert.title}</h3><span>Make this dessert →</span></div></a>)}
+          </div>
+        </div>
+      </section>
+
       <section className="cuisine-section" id="cuisines">
         <div className="section cuisine-inner">
           <div className="cuisine-copy"><p className="eyebrow light">Taste the world</p><h2>A table without borders</h2><p>Food brings us closer. Travel through treasured culinary traditions and discover new favourites—all from one generous table.</p><a className="button cream" href="/cuisines">View all cuisines</a></div>
@@ -82,7 +96,7 @@ export default function Home() {
 
       <section className="newsletter" id="contact"><p className="eyebrow light">Stay for seconds</p><h2>Three recipes, every day.</h2><p>Join the table and receive three fresh Copper Spoon recipes in your inbox each morning.</p><NewsletterForm/></section>
 
-      <footer><div className="brand"><span className="brand-mark">CS</span><span><b>The Copper Spoon</b><small>Food made with heart</small></span></div><p>Recipes · Cuisines · Restaurant</p><p>© 2026 The Copper Spoon</p></footer>
+      <footer><div className="brand"><span className="brand-mark">CS</span><span><b>The Copper Spoon</b><small>Food made with heart</small></span></div><p>Recipes · Cuisines · Desserts · Restaurants</p><p>© 2026 The Copper Spoon</p></footer>
     </main>
   );
 }

@@ -15,6 +15,25 @@ EMAIL AND PASSWORD
   https://thecopperspoon.com/**
   https://copper-spoon.vercel.app/**
 
+AUTH EMAIL DELIVERY (PREVENT "EMAIL RATE LIMIT EXCEEDED")
+The Supabase test email service is limited to two messages per hour. Connect the
+verified Copper Spoon Resend domain as custom SMTP for a public website.
+
+1. In Supabase open Authentication > Emails > SMTP Settings.
+2. Enable Custom SMTP and enter:
+   Sender email: account@send.thecopperspoon.com
+   Sender name: The Copper Spoon
+   Host: smtp.resend.com
+   Port: 465
+   Username: resend
+   Password: a Resend API key (create a separate key for Supabase Auth)
+3. Save. Then open Authentication > Rate Limits and choose an appropriate
+   email-sending limit. Start with 25 per hour unless the site needs more.
+4. Test one new signup and check the Resend Emails page if delivery fails.
+
+The Resend domain must show Verified before using this sender. Never add the
+SMTP password to NEXT_PUBLIC variables or commit it to this ZIP/GitHub.
+
 GOOGLE SIGN-IN
 1. In Google Cloud Console create OAuth 2.0 Web credentials.
 2. Copy the callback URL shown in Supabase > Authentication > Providers > Google.
