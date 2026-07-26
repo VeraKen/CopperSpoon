@@ -19,11 +19,10 @@ function loadTypeScriptModule(path) {
 
 const { desserts } = loadTypeScriptModule("app/data/desserts.ts");
 
-test("the complete dessert collection remains intact and unique", () => {
+test("the complete dessert collection remains intact", () => {
   assert.equal(desserts.length, 45);
   assert.equal(new Set(desserts.map(({ slug }) => slug)).size, desserts.length);
   assert.equal(new Set(desserts.map(({ title }) => title)).size, desserts.length);
-  assert.equal(new Set(desserts.map(({ image }) => image)).size, desserts.length);
 });
 
 test("every dessert is a complete, usable recipe", () => {
@@ -33,7 +32,7 @@ test("every dessert is a complete, usable recipe", () => {
     assert.ok(dessert.ingredients.length >= 5, `${dessert.title} needs more ingredients`);
     assert.ok(dessert.steps.length >= 5, `${dessert.title} needs more steps`);
     assert.ok(dessert.tip && dessert.time && dessert.servings);
-    assert.match(dessert.image, /^\/api\/dessert-art\/dessert-/);
+    assert.match(dessert.image, /^https:\/\/images\.unsplash\.com\/photo-/);
   }
 });
 

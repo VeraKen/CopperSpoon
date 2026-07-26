@@ -9,7 +9,7 @@ The project is designed for curious home cooks, food lovers in Lagos, beginners 
 ## Main features
 
 - Searchable and filterable recipes, cuisines, desserts, videos, and restaurants
-- Complete dessert collection with original Copper Spoon artwork
+- Complete dessert collection with full-colour food photography
 - Written ingredients, numbered methods, timing, difficulty, servings, and chef tips
 - Full HD cooking lessons linked directly to their recipes
 - Lagos restaurant locations and dining information
@@ -54,7 +54,7 @@ Or run both:
 npm run check
 ```
 
-The tests protect collection integrity, complete recipe content, unique artwork, static route coverage, accessible mobile navigation, recovery pages, and the public “All” collection naming rule.
+The tests protect collection integrity, complete recipe content, photography coverage, static route coverage, accessible mobile navigation, recovery pages, and the public “All” collection naming rule.
 
 ## Environment variables
 
