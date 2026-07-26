@@ -2,12 +2,6 @@ import { recipes } from "./data/recipes";
 import { desserts } from "./data/desserts";
 import NewsletterForm from "./components/newsletter-form";
 import SiteHeader from "./components/site-header";
-/*
-const oldRecipes = [
-  { slug: "silky-tomato-pasta", image: "/recipes/silky-pasta.jpg", title: "Silky Tomato Pasta", type: "Italian", time: "30 min", text: "Slow-roasted tomato, garlic, basil, and a glossy parmesan finish." },
-  { slug: "golden-butter-chicken", image: "/recipes/butter-chicken.jpg", title: "Golden Butter Chicken", type: "Indian", time: "45 min", text: "A warmly spiced, creamy classic made for sharing around the table." },
-  { slug: "smoky-jollof-rice", image: "/recipes/smoky-jollof.jpg", title: "Smoky Jollof Rice", type: "West African", time: "55 min", text: "Party-style rice with peppers, tomatoes, thyme, and deep smoky flavour." },
-];*/
 
 const cuisines = [
   { icon: "🍝", name: "Italian", note: "Silky Tomato Pasta", href: "/recipes/silky-tomato-pasta" },
@@ -27,7 +21,7 @@ export default function Home() {
           <p className="intro">Discover comforting recipes, explore flavours from around the world, and join us for unforgettable dining at The Copper Spoon.</p>
           <div className="hero-actions">
             <a className="button" href="#recipes">Explore recipes <span>→</span></a>
-            <a className="text-link" href="#restaurant">Discover our restaurant <span>↗</span></a>
+            <a className="text-link" href="/kitchen">Open My Kitchen <span>↗</span></a>
           </div>
           <div className="trust"><span>★★★★★</span> Recipes tested with love in our kitchen</div>
         </div>
@@ -67,6 +61,24 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="home-kitchen-feature">
+        <div className="home-kitchen-copy">
+          <p className="eyebrow light">New · Kitchen Intelligence</p>
+          <h2>Your ingredients.<br/>Your week.<br/><em>One calm plan.</em></h2>
+          <p>Tell Copper Spoon what you already have. My Kitchen finds useful recipe matches, organises seven days of meals, creates one shopping list and remembers every cuisine you cook.</p>
+          <div><a className="button cream" href="/kitchen">Build my kitchen plan →</a><a className="home-kitchen-text-link" href="/recipes/smoky-jollof-rice">Try guided Cook Mode</a></div>
+        </div>
+        <div className="home-kitchen-board" aria-label="My Kitchen feature preview">
+          <div className="mini-pantry-card"><small>Pantry match</small><strong>Chicken · rice · tomato</strong><span>Useful recipes found instantly</span></div>
+          <div className="mini-plan-grid">
+            <span><small>MON</small><b>Jollof</b></span>
+            <span><small>TUE</small><b>Pasta</b></span>
+            <span><small>WED</small><b>Curry</b></span>
+          </div>
+          <div className="mini-passport-card"><span>🇳🇬</span><span>🇮🇹</span><span>🇮🇳</span><div><small>Flavour Passport</small><b>Your cooking journey grows with every plate.</b></div></div>
+        </div>
+      </section>
+
       <section className="cuisine-section" id="cuisines">
         <div className="section cuisine-inner">
           <div className="cuisine-copy"><p className="eyebrow light">Taste the world</p><h2>A table without borders</h2><p>Food brings us closer. Travel through treasured culinary traditions and discover new favourites—all from one generous table.</p><a className="button cream" href="/cuisines">View all cuisines</a></div>
@@ -83,7 +95,7 @@ export default function Home() {
 
       <section className="newsletter" id="contact"><p className="eyebrow light">Stay for seconds</p><h2>Three recipes, every day.</h2><p>Join the table and receive three fresh Copper Spoon recipes in your inbox each morning.</p><NewsletterForm/></section>
 
-      <footer><div className="brand"><span className="brand-mark">CS</span><span><b>The Copper Spoon</b><small>Food made with heart</small></span></div><p>Recipes · Cuisines · Desserts · Restaurants</p><p><a href="/project-story">Project story</a> · © 2026 The Copper Spoon</p></footer>
+      <footer><div className="brand"><span className="brand-mark">CS</span><span><b>The Copper Spoon</b><small>Food made with heart</small></span></div><p>My Kitchen · Recipes · Cuisines · Desserts · Restaurants</p><p><a href="/project-story">Project story</a> · © 2026 The Copper Spoon</p></footer>
     </main>
   );
 }

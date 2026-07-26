@@ -18,6 +18,13 @@ function loadTypeScriptModule(path) {
 }
 
 const { desserts } = loadTypeScriptModule("app/data/desserts.ts");
+const {
+  buildGroceryList,
+  formatTimer,
+  getPantryMatches,
+  parseStepDuration,
+  scaleIngredient,
+} = loadTypeScriptModule("app/lib/kitchen.ts");
 
 test("the complete dessert collection remains intact", () => {
   assert.equal(desserts.length, 45);
@@ -54,12 +61,63 @@ test("the responsive menu exposes keyboard and screen-reader controls", () => {
 test("quality and recovery routes stay present", () => {
   for (const path of [
     "app/project-story/page.tsx",
+    "app/kitchen/page.tsx",
     "app/api/health/route.ts",
     "app/error.tsx",
     "app/not-found.tsx",
+    "app/offline/page.tsx",
+    "public/sw.js",
   ]) {
     assert.ok(read(path).length > 200, `${path} should not be empty`);
   }
+});
+
+test("pantry matching ranks recipes by ingredients a cook already owns", () => {
+  const sample = [
+    {
+      slug: "jollof",
+      title: "Jollof Rice",
+      ingredients: ["Rice", "Tomatoes", "Onion", "Chicken stock"],
+    },
+    {
+      slug: "cake",
+      title: "Cake",
+      ingredients: ["Flour", "Sugar", "Eggs", "Butter"],
+    },
+  ];
+  const matches = getPantryMatches(sample, ["rice", "tomato", "onions"]);
+  assert.equal(matches[0].recipe.slug, "jollof");
+  assert.equal(matches[0].matched.length, 3);
+  assert.ok(matches[0].score > 60);
+});
+
+test("Cook Mode scales common quantities and recognises step timers", () => {
+  assert.equal(scaleIngredient("500g chicken", 2), "1000g chicken");
+  assert.equal(scaleIngredient("½ teaspoon cumin", 2), "1 teaspoon cumin");
+  assert.equal(scaleIngredient("1 ½ cups rice", 2), "3 cups rice");
+  assert.equal(scaleIngredient("1½ teaspoons cinnamon", 2), "3 teaspoons cinnamon");
+  assert.equal(parseStepDuration("Simmer for 12–15 minutes."), 900);
+  assert.equal(parseStepDuration("Rest for 2 hours."), 7200);
+  assert.equal(formatTimer(905), "15:05");
+});
+
+test("weekly plans produce one deduplicated shopping list", () => {
+  const recipes = [
+    { slug: "one", title: "One", ingredients: ["1 onion", "2 tomatoes"] },
+    { slug: "two", title: "Two", ingredients: ["1 onion", "500g rice"] },
+  ];
+  const list = buildGroceryList({ Monday: "one", Tuesday: "two" }, recipes);
+  assert.equal(list.length, 3);
+  assert.equal(list.filter((item) => item.ingredient.includes("onion")).length, 1);
+});
+
+test("guided cooking includes accessible controls and browser-native assistance", () => {
+  const cookMode = read("app/components/cooking-studio.tsx");
+  assert.match(cookMode, /role="dialog"/);
+  assert.match(cookMode, /aria-modal="true"/);
+  assert.match(cookMode, /speechSynthesis/);
+  assert.match(cookMode, /wakeLock/);
+  assert.match(cookMode, /event\.key === "Escape"/);
 });
 
 test("public collection labels use All instead of exposing the item limit", () => {

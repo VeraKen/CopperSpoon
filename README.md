@@ -10,6 +10,10 @@ The project is designed for curious home cooks, food lovers in Lagos, beginners 
 
 - Searchable and filterable recipes, cuisines, desserts, videos, and restaurants
 - Complete dessert collection with full-colour food photography
+- My Kitchen pantry matching across the complete recipe collection
+- Seven-day meal planning with an automatically combined shopping list
+- Private saved recipes and a Flavour Passport of countries cooked
+- Guided Cook Mode with ingredient scaling, checklists, spoken steps, keyboard controls, screen wake lock and built-in timers
 - Written ingredients, numbered methods, timing, difficulty, servings, and chef tips
 - Full HD cooking lessons linked directly to their recipes
 - Lagos restaurant locations and dining information
@@ -19,6 +23,7 @@ The project is designed for curious home cooks, food lovers in Lagos, beginners 
 - Keyboard focus states, a skip link, semantic labels, reduced-motion support, error recovery, and a custom 404 page
 - Project Story page explaining the problem, audience, design choices, architecture, challenges, and learning
 - Health endpoint, structured server monitoring, retry-safe email delivery, and automated content tests
+- Installable PWA support with offline recovery for previously visited pages
 
 ## Technology
 
@@ -27,6 +32,7 @@ The project is designed for curious home cooks, food lovers in Lagos, beginners 
 - Supabase Authentication
 - Resend email delivery
 - Vercel deployment and cron scheduling
+- Browser-native speech, wake lock, storage, sharing and service-worker APIs
 
 The site keeps content in typed data modules, prerenders recipe pages for speed, and uses server routes for protected email and operational tasks. Secrets stay in Vercel environment variables and are never placed in browser code.
 
@@ -54,7 +60,7 @@ Or run both:
 npm run check
 ```
 
-The tests protect collection integrity, complete recipe content, photography coverage, static route coverage, accessible mobile navigation, recovery pages, and the public “All” collection naming rule.
+The tests protect collection integrity, complete recipe content, pantry ranking, ingredient scaling, cooking timers, shopping-list generation, photography coverage, static route coverage, accessible navigation, offline support, recovery pages, and the public “All” collection naming rule.
 
 ## Environment variables
 

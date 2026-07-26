@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import PwaRegister from "./components/pwa-register";
 
 export const metadata: Metadata = {
   title: "The Copper Spoon | Global Recipes, Desserts & Lagos Dining",
@@ -7,6 +8,12 @@ export const metadata: Metadata = {
   icons: {
     icon: "/copper-spoon-logo.png",
     shortcut: "/copper-spoon-logo.png",
+  },
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    title: "Copper Spoon",
+    statusBarStyle: "black-translucent",
   },
 };
 
@@ -26,6 +33,7 @@ export default function RootLayout({
       <body>
         <a className="skip-link" href="#main-content">Skip to main content</a>
         <div id="main-content">{children}</div>
+        <PwaRegister/>
       </body>
     </html>
   );

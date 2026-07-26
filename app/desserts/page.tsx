@@ -35,7 +35,7 @@ export default function DessertsPage() {
             <small>Recipes · Culture · Dining</small>
           </span>
         </a>
-        <a className="text-link" href="/">← Home</a>
+        <div className="directory-header-links"><a href="/kitchen">My Kitchen</a><a className="text-link" href="/">← Home</a></div>
       </header>
 
       <section className="dessert-hero">

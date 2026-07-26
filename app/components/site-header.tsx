@@ -6,6 +6,7 @@ import { recipes } from "../data/recipes";
 import AuthNav from "./auth-nav";
 
 const primaryLinks = [
+  { href: "/kitchen", label: "My Kitchen" },
   { href: "/cuisines#recipes", label: "Recipes" },
   { href: "/cuisines", label: "Cuisines" },
   { href: "/desserts", label: "Desserts" },
@@ -42,7 +43,7 @@ export default function SiteHeader() {
         <div className="nav-dropdown"><a href="/desserts">Desserts</a><div className="dropdown-menu dessert-menu">{desserts.slice(0,7).map((dessert)=><a key={dessert.slug} href={`/recipes/${dessert.slug}`}>{dessert.title}</a>)}<a className="view-all" href="/desserts">View all desserts</a></div></div>
         <div className="nav-dropdown"><a href="/videos">Videos</a><div className="dropdown-menu video-menu">{recipes.slice(0,7).map((recipe)=><a key={recipe.slug} href={`/videos?cuisine=${encodeURIComponent(recipe.cuisine)}`}>{recipe.title}</a>)}<a className="view-all" href="/videos">View all videos</a></div></div>
         <div className="nav-dropdown"><a href="/restaurants">Restaurants</a><div className="dropdown-menu restaurant-menu">{["NOK by Alara","Shiro Lagos","Cactus Restaurant","RSVP Lagos","Z Kitchen","Ocean Basket"].map((name)=><a key={name} href="/restaurants">{name}</a>)}<a className="view-all" href="/restaurants">View all restaurants</a></div></div>
-        <a className="story-navigation-link" href="/project-story">Our Story</a>
+        <a className="story-navigation-link kitchen-navigation-link" href="/kitchen">My Kitchen</a>
       </nav>
 
       <div className="header-actions">

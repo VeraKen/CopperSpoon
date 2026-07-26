@@ -2,8 +2,10 @@ import SiteHeader from "../components/site-header";
 
 const featureEvidence = [
   { number: "60+", title: "Global recipes", text: "A cuisine directory with searchable, step-by-step recipes representing food traditions across the world." },
+  { number: "Smart", title: "Pantry matching", text: "My Kitchen compares ingredients visitors already own with the full recipe library and ranks useful matches instantly." },
+  { number: "Guided", title: "Cook Mode", text: "Scalable ingredients, spoken steps, built-in timers, keyboard control and screen wake lock support real cooking." },
+  { number: "Personal", title: "Flavour Passport", text: "Saved recipes, weekly plans, shopping lists and countries cooked form a private journey stored on the visitor’s device." },
   { number: "All", title: "Dessert journeys", text: "A filterable dessert collection spanning Africa, Europe, Asia, the Middle East and the Americas." },
-  { number: "All", title: "Cooking lessons", text: "Full HD visual lessons paired directly with their written recipes so visitors can watch and cook." },
   { number: "All", title: "Lagos tables", text: "A practical dining guide organised by neighbourhood, with direct Google Maps location links." },
 ];
 
@@ -12,6 +14,8 @@ const decisions = [
   { challenge: "Desktop dropdown navigation did not translate well to phones.", decision: "Create an accessible mobile drawer with clear labels, Escape-key support and large tap targets.", result: "Every major area remains reachable on small screens." },
   { challenge: "Account and email services can fail outside the browser.", decision: "Add friendly errors, environment health checks, safe retries and structured monitoring.", result: "Problems are clearer to visitors and easier for the site owner to diagnose." },
   { challenge: "The brand needed to feel culturally grounded and globally welcoming.", decision: "Combine an African chef identity with copper, clay, cream and sage colours.", result: "The visual language feels warm, recognisable and connected to food culture." },
+  { challenge: "Most recipe sites stop at showing instructions.", decision: "Build a complete kitchen workflow: pantry discovery, planning, shopping, guided cooking and a personal passport.", result: "Copper Spoon now helps before, during and after someone cooks—not only while they browse." },
+  { challenge: "Personalisation often requires an account and internet connection.", decision: "Keep My Kitchen data private in the browser and make the core experience installable and offline-friendly.", result: "Visitors receive immediate value without surrendering personal data or completing registration." },
 ];
 
 export default function ProjectStoryPage() {
@@ -37,7 +41,7 @@ export default function ProjectStoryPage() {
         <div className="story-section-heading">
           <p className="eyebrow">Purpose and impact</p>
           <h2>Useful from the first click.</h2>
-          <p>The project turns food discovery into action. Every major feature answers a real visitor question: What can I cook? How do I make it? What sweet dish should I try? Where can I eat in Lagos?</p>
+          <p>The project turns food discovery into action. Every major feature answers a real visitor question: What can I cook with what I own? How do I make it confidently? What should I plan this week? Which culture will I explore next?</p>
         </div>
         <div className="evidence-grid">
           {featureEvidence.map((item)=><article key={item.title}><strong>{item.number}</strong><h3>{item.title}</h3><p>{item.text}</p></article>)}
@@ -71,23 +75,23 @@ export default function ProjectStoryPage() {
       <section className="story-section">
         <div className="story-section-heading">
           <p className="eyebrow">Technical achievement</p>
-          <h2>A complete working system.</h2>
-          <p>The interface is backed by real account, email and scheduled-delivery services—not demonstration buttons.</p>
+          <h2>A complete cooking system.</h2>
+          <p>The interface combines immediate browser-based intelligence with real account, email, offline and scheduled-delivery services—not demonstration buttons.</p>
         </div>
         <div className="architecture-flow" aria-label="Project architecture">
-          <div><span>01</span><b>Next.js interface</b><p>Fast, responsive pages and pre-built recipe routes.</p></div>
+          <div><span>01</span><b>Next.js interface</b><p>Fast, responsive pages, installable PWA support and pre-built recipe routes.</p></div>
           <i>→</i>
-          <div><span>02</span><b>Supabase accounts</b><p>Email and Google authentication with persistent sessions.</p></div>
+          <div><span>02</span><b>Kitchen Intelligence</b><p>Pantry ranking, serving calculations, meal planning, timers and private local persistence.</p></div>
           <i>→</i>
-          <div><span>03</span><b>Resend delivery</b><p>Welcome messages, unsubscribe support and three daily recipes.</p></div>
+          <div><span>03</span><b>Connected services</b><p>Supabase accounts plus Resend welcome messages, unsubscribe support and daily recipes.</p></div>
           <i>→</i>
-          <div><span>04</span><b>Vercel operations</b><p>Production deployment, scheduled jobs and health reporting.</p></div>
+          <div><span>04</span><b>Reliable operations</b><p>Vercel schedules, health reporting, safe retries, automated tests and offline recovery.</p></div>
         </div>
         <div className="technical-proof">
-          <span><b>120+</b><small>production pages</small></span>
-          <span><b>1080p</b><small>visual lessons</small></span>
-          <span><b>Daily</b><small>automated recipes</small></span>
-          <span><b>Secure</b><small>environment secrets</small></span>
+          <span><b>Smart</b><small>pantry matching</small></span>
+          <span><b>Guided</b><small>interactive cooking</small></span>
+          <span><b>Offline</b><small>installable kitchen</small></span>
+          <span><b>Private</b><small>personal planning</small></span>
         </div>
       </section>
 
@@ -113,6 +117,8 @@ export default function ProjectStoryPage() {
           <article><span>02</span><h3>Reliability is a feature</h3><p>A successful button animation means little if the email never arrives. External services need validation, retries, monitoring and human-friendly failure messages.</p></article>
           <article><span>03</span><h3>Accessibility improves everyone’s experience</h3><p>Keyboard focus, reduced-motion support, semantic labels and mobile navigation make the interface easier for more people and more situations.</p></article>
           <article><span>04</span><h3>Culture deserves care</h3><p>Global food should be presented with correct names, origin context and respectful imagery. Specificity creates trust and celebrates the people behind each dish.</p></article>
+          <article><span>05</span><h3>Personal does not have to mean invasive</h3><p>A useful pantry, meal plan and cooking history can live privately on a visitor’s device, work before sign-in and remain available when the connection disappears.</p></article>
+          <article><span>06</span><h3>Design for the kitchen, not the desk</h3><p>Large steps, screen wake lock, timers, speech and ingredient checklists respond to floury hands, busy pans and divided attention.</p></article>
         </div>
       </section>
 
@@ -127,13 +133,15 @@ export default function ProjectStoryPage() {
           <li>Alternative text and semantic page landmarks</li>
           <li>Reduced-motion support for sensitive visitors</li>
           <li>Clear form labels, status messages and recovery paths</li>
+          <li>Spoken cooking steps and keyboard-controlled Cook Mode</li>
+          <li>Offline access to previously visited kitchen pages</li>
         </ul>
       </section>
 
       <section className="story-cta">
         <p className="eyebrow">See the outcome</p>
-        <h2>Now, choose your next plate.</h2>
-        <div><a className="button" href="/cuisines">Explore recipes →</a><a className="text-link" href="/desserts">Discover all desserts →</a></div>
+        <h2>Now, make the kitchen yours.</h2>
+        <div><a className="button" href="/kitchen">Open My Kitchen →</a><a className="text-link" href="/cuisines">Choose a recipe →</a></div>
       </section>
 
       <footer><div className="brand"><span className="brand-mark">CS</span><span><b>The Copper Spoon</b><small>Food made with heart</small></span></div><p>Purpose · Process · Reflection</p><p>© 2026 The Copper Spoon</p></footer>
