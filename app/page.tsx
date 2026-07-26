@@ -1,7 +1,7 @@
 import { recipes } from "./data/recipes";
 import { desserts } from "./data/desserts";
 import NewsletterForm from "./components/newsletter-form";
-import AuthNav from "./components/auth-nav";
+import SiteHeader from "./components/site-header";
 /*
 const oldRecipes = [
   { slug: "silky-tomato-pasta", image: "/recipes/silky-pasta.jpg", title: "Silky Tomato Pasta", type: "Italian", time: "30 min", text: "Slow-roasted tomato, garlic, basil, and a glossy parmesan finish." },
@@ -18,20 +18,7 @@ const cuisines = [
 export default function Home() {
   return (
     <main>
-      <header className="nav-wrap">
-        <a className="brand" href="#home" aria-label="The Copper Spoon home">
-          <span className="brand-mark">CS</span>
-          <span><b>The Copper Spoon</b><small>Recipes · Culture · Dining</small></span>
-        </a>
-        <nav aria-label="Main navigation">
-          <div className="nav-dropdown"><a href="/cuisines#recipes">Recipes</a><div className="dropdown-menu">{recipes.slice(0,8).map((recipe)=><a key={recipe.slug} href={`/recipes/${recipe.slug}`}>{recipe.title}</a>)}<a className="view-all" href="/cuisines#recipes">View all</a></div></div>
-          <div className="nav-dropdown"><a href="/cuisines">Cuisines</a><div className="dropdown-menu">{["Mexican","Italian","Chinese","Indian","German","Greek","Filipino","Japanese"].map((name)=><a key={name} href={`/cuisines?name=${encodeURIComponent(name)}`}>{name}</a>)}<a className="view-all" href="/cuisines">View all</a></div></div>
-          <div className="nav-dropdown"><a href="/desserts">Desserts</a><div className="dropdown-menu dessert-menu">{desserts.slice(0,7).map((dessert)=><a key={dessert.slug} href={`/recipes/${dessert.slug}`}>{dessert.title}</a>)}<a className="view-all" href="/desserts">View all 45</a></div></div>
-          <div className="nav-dropdown"><a href="/videos">Video</a><div className="dropdown-menu video-menu">{recipes.slice(0,8).map((recipe)=><a key={recipe.slug} href={`/videos?cuisine=${encodeURIComponent(recipe.cuisine)}`}>{recipe.title}</a>)}<a className="view-all" href="/videos">View all</a></div></div>
-          <div className="nav-dropdown"><a href="/restaurants">Restaurants</a><div className="dropdown-menu restaurant-menu">{["NOK by Alara","Shiro Lagos","Cactus Restaurant","RSVP Lagos","Z Kitchen","Ocean Basket","Terra Kulture","Kapadoccia Lagos"].map((name)=><a key={name} href="/restaurants">{name}</a>)}<a className="view-all" href="/restaurants">View all</a></div></div>
-        </nav>
-        <AuthNav/>
-      </header>
+      <SiteHeader/>
 
       <section className="hero" id="home">
         <div className="hero-copy">
@@ -71,7 +58,7 @@ export default function Home() {
       <section className="dessert-preview">
         <div className="section">
           <div className="section-heading">
-            <div><p className="eyebrow light">Save room for something sweet</p><h2>45 desserts from around the world</h2></div>
+            <div><p className="eyebrow light">Save room for something sweet</p><h2>All desserts from around the world</h2></div>
             <a className="text-link dessert-preview-link" href="/desserts">Explore every dessert <span>→</span></a>
           </div>
           <div className="dessert-preview-grid">
@@ -96,7 +83,7 @@ export default function Home() {
 
       <section className="newsletter" id="contact"><p className="eyebrow light">Stay for seconds</p><h2>Three recipes, every day.</h2><p>Join the table and receive three fresh Copper Spoon recipes in your inbox each morning.</p><NewsletterForm/></section>
 
-      <footer><div className="brand"><span className="brand-mark">CS</span><span><b>The Copper Spoon</b><small>Food made with heart</small></span></div><p>Recipes · Cuisines · Desserts · Restaurants</p><p>© 2026 The Copper Spoon</p></footer>
+      <footer><div className="brand"><span className="brand-mark">CS</span><span><b>The Copper Spoon</b><small>Food made with heart</small></span></div><p>Recipes · Cuisines · Desserts · Restaurants</p><p><a href="/project-story">Project story</a> · © 2026 The Copper Spoon</p></footer>
     </main>
   );
 }

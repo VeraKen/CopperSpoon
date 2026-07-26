@@ -41,13 +41,13 @@ export default function DessertsPage() {
       <section className="dessert-hero">
         <div className="dessert-hero-copy">
           <p className="eyebrow light">The sweet table</p>
-          <h1>45 desserts.<br /><em>A world of joy.</em></h1>
+          <h1>All desserts.<br /><em>A world of joy.</em></h1>
           <p>
             Bake, chill, fry and share beloved sweet recipes from Africa,
             Europe, Asia, the Middle East and the Americas.
           </p>
           <div className="dessert-stats">
-            <span><b>45</b><small>complete recipes</small></span>
+            <span><b>All</b><small>complete recipes</small></span>
             <span><b>5</b><small>world regions</small></span>
             <span><b>6</b><small>dessert styles</small></span>
           </div>
@@ -88,9 +88,9 @@ export default function DessertsPage() {
         <div className="dessert-library-heading">
           <div>
             <p className="eyebrow">Choose something sweet</p>
-            <h2>{shown.length === 45 ? "The complete dessert collection" : `${shown.length} desserts found`}</h2>
+            <h2>{shown.length === desserts.length ? "The complete dessert collection" : `${shown.length} desserts found`}</h2>
           </div>
-          <p>{shown.length} of 45 recipes</p>
+          <p>{shown.length === desserts.length ? "Showing all desserts" : `${shown.length} desserts found`}</p>
         </div>
 
         {shown.length > 0 ? (
@@ -120,7 +120,7 @@ export default function DessertsPage() {
             <span>🍮</span>
             <h2>No dessert matched that search.</h2>
             <button onClick={() => { setQuery(""); setRegion("All regions"); setCategory("All types"); }}>
-              Show all 45 desserts
+              Show all desserts
             </button>
           </div>
         )}
