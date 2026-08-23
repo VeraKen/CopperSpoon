@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import test from "node:test";
 import ts from "typescript";
 
@@ -135,4 +135,24 @@ test("public collection labels use All instead of exposing the item limit", () =
       assert.ok(!source.includes(phrase), `${path} exposes “${phrase}” in visible copy`);
     }
   }
+});
+
+
+test("the first 45 cooking lessons have matching video assets", () => {
+  const recipeSource = read("app/data/recipes.ts");
+  const videoSource = read("app/videos/page.tsx");
+  assert.match(recipeSource, /export const recipes/);
+  assert.match(videoSource, /const videoLessons=recipes\.slice\(0,45\)/);
+  const videoFiles = new Set(
+    readdirSync(new URL("../public/videos", import.meta.url))
+      .filter((name) => name.endsWith(".mp4"))
+      .map((name) => name.slice(0, -4)),
+  );
+  const slugMatches = [...recipeSource.matchAll(/slug:"([^"]+)"/g)].map((match) => match[1]);
+  assert.ok(slugMatches.length >= 45);
+  assert.equal(
+    slugMatches.slice(0, 45).filter((slug) => !videoFiles.has(slug)).length,
+    0,
+    "Every displayed video lesson needs a matching public MP4 file",
+  );
 });

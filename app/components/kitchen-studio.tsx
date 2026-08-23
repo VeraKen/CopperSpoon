@@ -108,7 +108,7 @@ export default function KitchenStudio({ recipes }: { recipes: KitchenRecipe[] })
       ...current,
       pantry: current.pantry.includes(item)
         ? current.pantry
-        : [...current.pantry, item],
+        : [...current.pantry, item].slice(0, 30),
     }));
   }
 

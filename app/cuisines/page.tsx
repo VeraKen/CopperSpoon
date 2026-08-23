@@ -4,7 +4,7 @@ import { recipes, worldCuisines } from "../data/recipes";
 
 export default function CuisinesPage(){
  const [selected,setSelected]=useState("All cuisines");
- useEffect(()=>{const name=new URLSearchParams(window.location.search).get("name");if(name)setSelected(name);},[]);
+ useEffect(()=>{const name=new URLSearchParams(window.location.search).get("name");if(name&&worldCuisines.includes(name))setSelected(name);else setSelected("All cuisines");},[]);
  const cuisineList=useMemo(()=>selected==="All cuisines"?worldCuisines:worldCuisines.filter(x=>x===selected),[selected]);
  const shownRecipes=useMemo(()=>selected==="All cuisines"?recipes:recipes.filter(r=>r.cuisine===selected||r.country===selected),[selected]);
  const popular=["All cuisines","Nigerian","Italian","Mexican","Indian","Chinese","Japanese","West African","Thai","French","Greek","Filipino"];
