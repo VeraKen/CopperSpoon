@@ -1,3 +1,4 @@
+import { foodImage } from "./food-image";
 import type { Recipe } from "./recipes";
 
 export type DessertRecipe = Recipe & {
@@ -19,20 +20,7 @@ type DessertSeed = {
   tip: string;
 };
 
-const dessertPhotos = [
-  "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=1200&q=88",
-  "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1200&q=88",
-  "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=1200&q=88",
-  "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=1200&q=88",
-  "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=1200&q=88",
-  "https://images.unsplash.com/photo-1519915028121-7d3463d20b13?auto=format&fit=crop&w=1200&q=88",
-  "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=1200&q=88",
-  "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=1200&q=88",
-  "https://images.unsplash.com/photo-1550617931-e17a7b70dce2?auto=format&fit=crop&w=1200&q=88",
-  "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=1200&q=88",
-  "https://images.unsplash.com/photo-1559620192-032c4bc4674e?auto=format&fit=crop&w=1200&q=88",
-  "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=1200&q=88",
-];
+
 
 const seeds: DessertSeed[] = [
   {
@@ -361,7 +349,7 @@ export const desserts: DessertRecipe[] = seeds.map((dessert, index) => {
     ...dessert,
     slug,
     cuisine: dessert.country,
-    image: dessertPhotos[index % dessertPhotos.length],
+    image: foodImage(dessert.title, dessert.country),
     servings: dessert.category === "Confection" ? "12 pieces" : "6",
   };
 });
